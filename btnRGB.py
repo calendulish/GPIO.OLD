@@ -2,6 +2,7 @@
 
 import RPi.GPIO as GPIO
 from time import sleep
+import random
 
 GPIO.setmode(GPIO.BCM)
 
@@ -42,7 +43,7 @@ def pisca():
         for led in [ BLUE, GREEN, RED ]:
             if POWER:
                 GPIO.output(led, True)
-                sleep(0.15)
+                sleep(random.uniform(0.01, 1))
                 GPIO.output(led, False)
             else:
                 break
