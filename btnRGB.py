@@ -8,17 +8,20 @@ GPIO.setmode(GPIO.BCM)
 BLUE = 25
 GREEN = 24
 RED = 23
-BTN = 4
+BTN1 = 4
+BTN2 = 22
 
 GPIO.setup(BLUE, GPIO.OUT, initial=GPIO.LOW)
 GPIO.setup(GREEN, GPIO.OUT, initial=GPIO.LOW)
 GPIO.setup(RED, GPIO.OUT, initial=GPIO.LOW)
-GPIO.setup(BTN, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+GPIO.setup(BTN1, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+GPIO.setup(BTN2, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
 POWER = False
+EXIT = False
 
-def checkBTN(event):
-#    print("Fez clic clac (Oia aqui: {}) no pininho: {}".format(GPIO.input(BTN), event))
+def checkBTN1(BTN1):
+#    print("Fez clic clac (Oia aqui: {}) no pininho: {}".format(GPIO.input(BTN1), event))
     global POWER
     if POWER:
         print("DESLIGUEI... Ahhh =(")
@@ -27,20 +30,36 @@ def checkBTN(event):
         print("LIGUEI!!! Uhhuul \o/")
         POWER = True
 
+def checkBTN2(BTN2):
+    global POWER
+    global EXIT
+    POWER = False
+    EXIT = True
+
 def pisca():
     while True:
+        if EXIT: break
         for led in [ BLUE, GREEN, RED ]:
             if POWER:
                 GPIO.output(led, True)
                 sleep(0.15)
-                GPIO.output(led,False)
+                GPIO.output(led, False)
             else:
                 break
 
-GPIO.add_event_detect(BTN, GPIO.FALLING, callback=checkBTN, bouncetime=500)
+def sair(status):
+    print("TCHAU... DE NOVOOOOO")
+    GPIO.cleanup()
+    exit(status)
+
+GPIO.add_event_detect(BTN1, GPIO.BOTH)
+GPIO.add_event_callback(BTN1, callback=checkBTN1, bouncetime=300)
+
+GPIO.add_event_detect(BTN2, GPIO.BOTH)
+GPIO.add_event_callback(BTN2, callback=checkBTN2, bouncetime=100)
 
 try:
     pisca()
 except KeyboardInterrupt:
-    GPIO.cleanup()
-    exit(0)
+    sair(0)
+sair(0)
