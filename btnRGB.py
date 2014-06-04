@@ -11,12 +11,14 @@ GREEN = 24
 RED = 23
 BTN1 = 4
 BTN2 = 22
+BTN3 = 17
 
 GPIO.setup(BLUE, GPIO.OUT, initial=GPIO.LOW)
 GPIO.setup(GREEN, GPIO.OUT, initial=GPIO.LOW)
 GPIO.setup(RED, GPIO.OUT, initial=GPIO.LOW)
 GPIO.setup(BTN1, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 GPIO.setup(BTN2, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+GPIO.setup(BTN3, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
 POWER = False
 EXIT = False
@@ -31,7 +33,7 @@ def checkBTN1(BTN1):
         print("LIGUEI!!! Uhhuul \o/")
         POWER = True
 
-def checkBTN2(BTN2):
+def checkBTN3(BTN3):
     global POWER
     global EXIT
     POWER = False
@@ -56,8 +58,8 @@ def sair(status):
 GPIO.add_event_detect(BTN1, GPIO.BOTH)
 GPIO.add_event_callback(BTN1, callback=checkBTN1, bouncetime=300)
 
-GPIO.add_event_detect(BTN2, GPIO.BOTH)
-GPIO.add_event_callback(BTN2, callback=checkBTN2, bouncetime=100)
+GPIO.add_event_detect(BTN3, GPIO.BOTH)
+GPIO.add_event_callback(BTN3, callback=checkBTN3, bouncetime=100)
 
 try:
     pisca()
