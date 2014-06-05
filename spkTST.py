@@ -13,10 +13,10 @@ pwmSPEAKER.start(5)
 
 try:
     while True:
-        for freq in range(500,1000, 1):
+        for freq in range(500,1001, 1):
             pwmSPEAKER.ChangeFrequency(freq)
             sleep(0.001)
-        for freq in range(1000, 500, -1):
+        for freq in range(1000, 499, -1):
             pwmSPEAKER.ChangeFrequency(freq)
             sleep(0.001)
 except KeyboardInterrupt:
