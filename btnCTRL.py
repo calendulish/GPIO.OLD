@@ -56,17 +56,13 @@ def sair(status):
     GPIO.cleanup()
     exit(status)
 
-GPIO.add_event_detect(BTN1, GPIO.BOTH)
-GPIO.add_event_callback(BTN1, callback=BTN_dir, bouncetime=300)
-
-GPIO.add_event_detect(BTN2, GPIO.BOTH)
-GPIO.add_event_callback(BTN2, callback=BTN_esq, bouncetime=300)
-
-GPIO.add_event_detect(BTN3, GPIO.BOTH)
-GPIO.add_event_callback(BTN3, callback=sair, bouncetime=300)
+GPIO.add_event_detect(BTN1, GPIO.FALLING, callback=BTN_dir)
+GPIO.add_event_detect(BTN2, GPIO.FALLING, callback=BTN_esq)
+GPIO.add_event_detect(BTN3, GPIO.FALLING, callback=sair)
 
 try:
     led()
 except KeyboardInterrupt:
     sair(0)
 sair(0)
+
