@@ -1,6 +1,7 @@
 # Aprendendo a usar a GPIO
 
 * RGBLed.py Transições entre leds RGB (com fade) (RPi.GPIO)
+* btnGAME.py Jogo simples usando leds e botões (RPi.GPIO)
 * btnRGB.py Controle de entrada para leds RGB (RPi.GPIO)
 * btnCTRL.py Controle de entrada com multiplos botões (RPi.GPIO)
 * spkTST.py Teste simples com áudio em loop de frequências (RPi.GPIO)
