@@ -52,7 +52,7 @@ class Play:
         # Tendo um sistema musical que divide oitavas em 12 intervalos
         # iguais de meio-passos (como em um piano), temos que:
         # freq = nota mais baixa possível x ((2^(1/12))^((oitava*12)+nota))
-        if len(note) == 3 and not note[2:3] == ':':
+        if len(note) >= 3 and not note[2:3] == ':':
             if note[1:2] == 'b':
                 note = labels[ labels.index( note[0:1] ) -1 ]+note[2:3]
 
