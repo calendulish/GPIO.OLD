@@ -69,14 +69,13 @@ class Play:
         divisor = 43.6363636364 # 19.2/0.440
         dutyCycle = period/2
 
-        self.window.clear()
         self.window.box()
         self.window.addstr(1, 25, 'spkMusic - Lara Maia <lara@craft.net.br>', curses.color_pair(1))
-        self.window.addstr(3, 25, 'note: {}'.format(noteName), curses.color_pair(2))
-        self.window.addstr(4, 25, 'freq: {}'.format(freq), curses.color_pair(2))
-        self.window.addstr(5, 25, 'period: {}'.format(period), curses.color_pair(2))
-        self.window.addstr(6, 25, 'divisor: {}'.format(divisor), curses.color_pair(2))
-        self.window.addstr(7, 25, 'dutyCycle: {}'.format(dutyCycle), curses.color_pair(2))
+        self.window.addstr(3, 25, 'note: {:3}'.format(noteName), curses.color_pair(2))
+        self.window.addstr(4, 25, 'freq: {:.3f}'.format(freq), curses.color_pair(2))
+        self.window.addstr(5, 25, 'period: {:.3f}'.format(period), curses.color_pair(2))
+        self.window.addstr(6, 25, 'divisor: {:.3f}'.format(divisor), curses.color_pair(2))
+        self.window.addstr(7, 25, 'dutyCycle: {:.3f}'.format(dutyCycle), curses.color_pair(2))
         self.window.refresh()
 
         return (int(period), int(divisor), int(dutyCycle))
