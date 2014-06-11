@@ -52,7 +52,7 @@ class Play:
         # Tendo um sistema musical que divide oitavas em 12 intervalos
         # iguais de meio-passos (como em um piano), temos que:
         # freq = nota mais baixa possível x ((2^(1/12))^((oitava*12)+nota))
-        if len(note) == 3:
+        if len(note) == 3 and not note[2:3] == ':':
             if note[1:2] == 'b':
                 note = labels[ labels.index( note[0:1] ) -1 ]+note[2:3]
 
@@ -72,7 +72,7 @@ class Play:
 
         self.window.box()
         self.window.addstr(1, 25, 'spkMusic - Lara Maia <lara@craft.net.br>', curses.color_pair(1))
-        self.window.addstr(3, 25, 'note: {:3}'.format(noteName), curses.color_pair(2))
+        self.window.addstr(3, 25, 'note: {:4}'.format(noteName), curses.color_pair(2))
         self.window.addstr(4, 25, 'freq: {:.3f}'.format(freq), curses.color_pair(2))
         self.window.addstr(5, 25, 'period: {:.3f}'.format(period), curses.color_pair(2))
         self.window.addstr(6, 25, 'dutyCycle: {:.3f}'.format(dutyCycle), curses.color_pair(2))
@@ -86,13 +86,16 @@ class Play:
         for i, note in enumerate(Music.melody):
             if len(note) == 0:
                 wiringpi2.pwmWrite(self.SPEAKER, 0)
-                wiringpi2.delay(62*(Music.beats[i]+1))
             else:
                 period, dutyCycle = self.calcParams(note)
                 wiringpi2.pwmSetRange(period)
                 wiringpi2.pwmWrite(self.SPEAKER, dutyCycle)
 
-                wiringpi2.delay(125*(Music.beats[i]+1))
+            wiringpi2.delay(Music.delay*(Music.beats[i]+1))
+
+            if note[len(note)-1:] == ':':
+                wiringpi2.pwmWrite(self.SPEAKER, 0)
+                wiringpi2.delay(Music.delay)
 
         curses.endwin()
         wiringpi2.pinMode(self.SPEAKER, 0)
