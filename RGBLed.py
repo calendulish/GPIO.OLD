@@ -7,9 +7,9 @@ GPIO.setmode(GPIO.BCM)
 
 GPIO.setwarnings(False)
 
-RED = 25
-GREEN = 24
-BLUE = 23
+RED = 23
+GREEN = 15
+BLUE = 27
 
 GPIO.setup(RED, GPIO.OUT)
 GPIO.setup(GREEN, GPIO.OUT)
