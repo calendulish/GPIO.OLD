@@ -15,7 +15,6 @@
 #
 
 import wiringpi2
-from time import sleep
 
 wiringpi2.wiringPiSetupGpio()
 
@@ -56,32 +55,31 @@ wiringpi2.pwmSetMode(wiringpi2.GPIO.PWM_MODE_MS)
 # dutyCycle = 1136.364
 
 # 4) Divisor do clock
-# divisor = clock (hz)/(freq (hz) x period (µs))
+# divisor = clock base / frequencia de afinação
 # Tendo que o clock base do pwm é 19.2mhz:
-# divisor = (19.2x1000000)/(440 x 2272.728)
-# divisor = 19200000/1000000.32
-# divisor = 19.1999939
+# divisor = (19.2x1000)/440
+# divisor = 43.6363636364
+
+divisor = (19.2*(10**3))/440
+wiringpi2.pwmSetClock(int(divisor))
 
 def calcParams(freq):
    period = (1/freq)*(10**6)
-   divisor = (19.2*(10**6))/(freq*period)
    dutyCycle = period/2
-   return (int(period), int(divisor), int(dutyCycle))
+   return (int(period), int(dutyCycle))
 
 try:
     while True:
         for freq in range(500, 1001, 1):
-            period, divisor, dutyCycle = calcParams(freq)
+            period, dutyCycle = calcParams(freq)
             wiringpi2.pwmSetRange(period)
-            wiringpi2.pwmSetClock(divisor)
             wiringpi2.pwmWrite(SPEAKER, dutyCycle)
-            sleep(0.001)
+            wiringpi2.delay(1)
         for freq in range(1000, 499, -1):
-            period, divisor, dutyCycle = calcParams(freq)
+            period, dutyCycle = calcParams(freq)
             wiringpi2.pwmSetRange(period)
-            wiringpi2.pwmSetClock(divisor)
             wiringpi2.pwmWrite(SPEAKER, dutyCycle)
-            sleep(0.001)
+            wiringpi2.delay(1)
 except KeyboardInterrupt:
     wiringpi2.pwmWrite(SPEAKER, 0)
     wiringpi2.pinMode(SPEAKER, 0)

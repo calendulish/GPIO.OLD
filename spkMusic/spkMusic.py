@@ -29,6 +29,8 @@ class Play:
         self.SPEAKER = 18
         self.MODE_PWM = 2
 
+        self.divisor = (19.2*(10**3))/440
+
         wiringpi2.pinMode(self.SPEAKER, self.MODE_PWM)
         wiringpi2.pwmSetMode(wiringpi2.GPIO.PWM_MODE_MS)
 
@@ -66,7 +68,6 @@ class Play:
         freq = freqBase*(magicNumber**(octave+note))
 
         period = (1/freq)*(10**6)
-        divisor = 43.6363636364 # 19.2/0.440
         dutyCycle = period/2
 
         self.window.box()
@@ -74,17 +75,17 @@ class Play:
         self.window.addstr(3, 25, 'note: {:3}'.format(noteName), curses.color_pair(2))
         self.window.addstr(4, 25, 'freq: {:.3f}'.format(freq), curses.color_pair(2))
         self.window.addstr(5, 25, 'period: {:.3f}'.format(period), curses.color_pair(2))
-        self.window.addstr(6, 25, 'divisor: {:.3f}'.format(divisor), curses.color_pair(2))
-        self.window.addstr(7, 25, 'dutyCycle: {:.3f}'.format(dutyCycle), curses.color_pair(2))
+        self.window.addstr(6, 25, 'dutyCycle: {:.3f}'.format(dutyCycle), curses.color_pair(2))
         self.window.refresh()
 
-        return (int(period), int(divisor), int(dutyCycle))
+        return (int(period), int(dutyCycle))
 
     def main(self):
+        wiringpi2.pwmSetClock(int(self.divisor))
+
         for i, note in enumerate(Music.melody):
-            period, divisor, dutyCycle = self.calcParams(note)
+            period, dutyCycle = self.calcParams(note)
             wiringpi2.pwmSetRange(period)
-            wiringpi2.pwmSetClock(divisor)
             wiringpi2.pwmWrite(self.SPEAKER, dutyCycle)
             wiringpi2.delay(125*(Music.beats[i]+1))
 
