@@ -10,4 +10,4 @@
 | spkTST-DMA.py | loop de frequência, usando pwm via hardware               | Python    | wiringpi2  |
 | spkNotes.py   | Teste com áudio mal feito, usando pwm via software        | Python    | RPi.GPIO   |
 | spkNotes2.py  | Teste com áudio usando a biblioteca softTone do wiringpi2 | Python    | wiringpi2  |
-
+| spkMusic      | Reprodutor de melodias                                    | Python    | wiringpi2  |
