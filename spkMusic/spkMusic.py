@@ -84,10 +84,15 @@ class Play:
         wiringpi2.pwmSetClock(int(self.divisor))
 
         for i, note in enumerate(Music.melody):
-            period, dutyCycle = self.calcParams(note)
-            wiringpi2.pwmSetRange(period)
-            wiringpi2.pwmWrite(self.SPEAKER, dutyCycle)
-            wiringpi2.delay(125*(Music.beats[i]+1))
+            if len(note) == 0:
+                wiringpi2.pwmWrite(self.SPEAKER, 0)
+                wiringpi2.delay(62*(Music.beats[i]+1))
+            else:
+                period, dutyCycle = self.calcParams(note)
+                wiringpi2.pwmSetRange(period)
+                wiringpi2.pwmWrite(self.SPEAKER, dutyCycle)
+
+                wiringpi2.delay(125*(Music.beats[i]+1))
 
         curses.endwin()
         wiringpi2.pinMode(self.SPEAKER, 0)
