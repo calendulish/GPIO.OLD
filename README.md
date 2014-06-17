@@ -11,3 +11,4 @@
 | spkNotes.py   | Teste com áudio mal feito, usando pwm via software        | Python    | RPi.GPIO   |
 | spkNotes2.py  | Teste com áudio usando a biblioteca softTone do wiringpi2 | Python    | wiringpi2  |
 | spkMusic      | Reprodutor de melodias                                    | Python    | wiringpi2  |
+| gpioMorse.py  | Traduz frases em código morse para led/buzzer             | Python    | RPi.GPIO   |
