@@ -19,7 +19,7 @@
 #
 #
 
-delay = 60
+delay = 50
 
 melody = [
           'E6:',
