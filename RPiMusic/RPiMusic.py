@@ -77,6 +77,9 @@ class Melody:
                 wiringpi2.pwmWrite(self.SPEAKER, 0)
                 wiringpi2.delay(int(Music.tempo/2))
 
+        # Make sure that music stop
+        wiringpi2.pwmWrite(self.SPEAKER, 0)
+
     def buzzerPlay(self, music):
         self._playLoop(2400, music)
 

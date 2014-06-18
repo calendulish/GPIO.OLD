@@ -10,6 +10,6 @@
 | spkPlay      | Playback melody using a speaker at 440hz                    |
 | ledPlay      | blink led in rhythm of melody (current not implemented)     |
 | Melody       | Main class used for setup module (pwm, pins, etc)           |
-| End          | Cleanup gpio and pwm frequencies                            |
+| end          | Cleanup gpio and pwm frequencies                            |
 
 *Lara Maia <lara@craft.net.br>*
