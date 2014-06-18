@@ -58,6 +58,8 @@ class Melody:
         divisor = (19.2*(10**3))/freq
         Music = import_module(music)
 
+        wiringpi2.pwmSetClock(int(divisor))
+
         for note, beat in Music.melody:
             if note == ' ':
                 wiringpi2.pwmWrite(self.SPEAKER, 0)
