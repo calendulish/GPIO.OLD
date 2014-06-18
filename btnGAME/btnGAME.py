@@ -19,6 +19,7 @@
 # Versão 0.1 (RPi.GPIO version)
 # Versão 0.2 (Changed to wiringpi2)
 # Versão 0.3 (Changed back due a bug with wiringPiISR function, in Python XD)
+# Versão 0.4 (Added time and sounds)
 #
 
 import RPi.GPIO as GPIO
@@ -26,6 +27,8 @@ import RPi.GPIO as GPIO
 from time import sleep
 import random
 from threading import Thread
+import RPiMusic
+import ClickSound, ThemeSound, EndSound
 
 #Modo da GPIO seguindo a numeração BCM, ao inves da pinagem.
 GPIO.setmode(GPIO.BCM)
@@ -49,7 +52,17 @@ class Blink(Thread):
                 else:
                     if not self.parent.running:
                         break
+            if self.parent.start and self.parent.count < 30:
+                print("Tempo restante: {:d}s".format(30-self.parent.count))
+                self.parent.count += 1
+            elif self.parent.start and self.parent.count == 30:
+                print("Acabou... Lero, lerooo, nã nã nã nã.")
+                self.parent.press_btnGreen()
+
+        # FIXME
+        self.parent.pMusic.end()
         GPIO.cleanup()
+
         #wiringpi2.pinMode(self.parent.ledBlue, 0)
         #wiringpi2.pinMode(self.parent.ledGreen, 0)
         #wiringpi2.pinMode(self.parent.ledRed, 0)
@@ -69,9 +82,12 @@ class Game:
         self.btnYellow = 22
         self.btnRed = 17
 
+        self.spkPin = 18
+
         self.start = False
         self.exit = False
         self.points = 0
+        self.count = 0
 
         self.player = None
 
@@ -102,6 +118,8 @@ class Game:
 
         self.thBlink = Blink(self)
 
+        self.pMusic = RPiMusic.Melody()
+
     def main(self):
         # Quem vai jogar?
 
@@ -114,7 +132,6 @@ class Game:
         self.thBlink.start()
 
         print('Para iniciar o jogo, aperte o botão verde e SE PREPARE!')
-
 
     def _exit(self, obj=None):
         self.running = False
@@ -137,16 +154,20 @@ class Game:
                 print('Conseguiu +1, Legal! Total: {} pontos'.format(self.points))
         else:
             print('Errou bobão :P')
+        self.pMusic.buzzerPlay("ClickSound")
 
     '''Botão verde inicia ou para o jogo alterando a variavel
     global POWER que e lida na função pisca()'''
-    def press_btnGreen(self, obj):
+    def press_btnGreen(self, obj=None):
         if not self.start:
+            self.pMusic.buzzerPlay("ThemeSound")
             print("ATENCÃO! ATENCÃO! ATENCÃO! COMEÇOU!!!")
             print("Quando o led VERDE acender, aperte o botão AMARELO")
+            self.count = 0
             self.start = True # Deve iniciar a thread pisca()
-        else: # if self.start = True
+        else:
             self.start = False # Encerra o jogo
+            self.pMusic.buzzerPlay("EndSound")
             print("Sistemas desligados...")
             if self.points == 0:
                 print("{}, você tentou jogar pelo menos?".format(self.player))
