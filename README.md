@@ -14,7 +14,6 @@
 | spkNotes2.py  | Audio test using the library softTone of wiringpi2        | Python    | wiringpi2  |
 | spkMusic      | Melody player (Deprecated! Use RPiMusic instead)          | Python    | wiringpi2  |
 | gpioMorse.py  | Translate phrases in morse code for led/buzzer            | Python    | RPi.GPIO   |
-| RPiMusic      | Library to help in melodies playback                      | Python    | wiringpi2  |
 
 ## Português
 
@@ -30,7 +29,6 @@
 | spkNotes2.py  | Teste com áudio usando a biblioteca softTone do wiringpi2 | Python    | wiringpi2  |
 | spkMusic      | Reprodutor de melodias (Obsoleto! Use o RPiMusic)         | Python    | wiringpi2  |
 | gpioMorse.py  | Traduz frases em código morse para led/buzzer             | Python    | RPi.GPIO   |
-| RPiMusic      | Biblioteca para auxiliar na reprodução de melodias        | Python    | wiringpi2  |
 
 *Lara Maia <lara@craft.net.br>*
 
