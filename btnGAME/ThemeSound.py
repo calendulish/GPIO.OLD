@@ -1,11 +1,11 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#    Copyright (C) 2112 Lara Maia <lara@craft.net.br>
+#    Copyright (C) 2014 Fernando Manfredi <manfredi@gmail.com>
 #
-#    This file is part of spkMusic.
+#    This file is part of btnGAME
 #
-#    spkMusic is free software: you can redistribute it and/or modify
+#    btnGAME is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU General Public License as published by
 #    the Free Software Foundation, either version 3 of the License, or
 #    (at your option) any later version.
