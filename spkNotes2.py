@@ -5,7 +5,7 @@ from time import sleep
 
 wiringpi2.wiringPiSetupGpio()
 
-SPEAKER = 17
+SPEAKER = 18
 
 # Escala da 5° oitava
 C = 523

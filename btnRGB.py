@@ -56,10 +56,10 @@ def sair(status):
     exit(status)
 
 GPIO.add_event_detect(BTN1, GPIO.BOTH)
-GPIO.add_event_callback(BTN1, callback=checkBTN1, bouncetime=300)
+GPIO.add_event_callback(BTN1, callback=checkBTN1)
 
 GPIO.add_event_detect(BTN3, GPIO.BOTH)
-GPIO.add_event_callback(BTN3, callback=checkBTN3, bouncetime=100)
+GPIO.add_event_callback(BTN3, callback=checkBTN3)
 
 try:
     pisca()

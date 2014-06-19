@@ -28,7 +28,6 @@ from time import sleep
 import random
 from threading import Thread
 import RPiMusic
-import ClickSound, ThemeSound, EndSound
 
 #Modo da GPIO seguindo a numeração BCM, ao inves da pinagem.
 GPIO.setmode(GPIO.BCM)

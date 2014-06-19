@@ -5,10 +5,10 @@ from time import sleep
 
 GPIO.setmode(GPIO.BCM)
 
-SPEAKER = 17
+SPEAKER = 18
 GPIO.setup(SPEAKER, GPIO.OUT)
 
-pwmSPEAKER = GPIO.PWM(SPEAKER, 440)
+pwmSPEAKER = GPIO.PWM(SPEAKER, 2400)
 pwmSPEAKER.start(10)
 
 # Escala da 5° oitava
