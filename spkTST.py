@@ -8,8 +8,8 @@ SPEAKER = 18
 
 GPIO.setup(SPEAKER,GPIO.OUT)
 
-pwmSPEAKER = GPIO.PWM(SPEAKER, 1)
-pwmSPEAKER.start(5)
+pwmSPEAKER = GPIO.PWM(SPEAKER, 440)
+pwmSPEAKER.start(50)
 
 try:
     while True:
