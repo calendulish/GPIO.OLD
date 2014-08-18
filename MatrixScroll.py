@@ -43,21 +43,24 @@ try:
     while True:
         for i in range(0, 24):
             i=8-i
-            draw(3+i, 1)
-            draw(2+i, 2)
-            draw(1+i, 3)
-            draw(1+i, 4)
-            draw(2+i, 5)
-            draw(3+i, 6)
-            draw(4+i, 7)
-            draw(5+i, 6)
-            draw(6+i, 5)
-            draw(7+i, 4)
-            draw(7+i, 3)
-            draw(6+i, 2)
-            draw(5+i, 1)
-            draw(4+i, 2)
-            sleep(0.04)
+            l=0
+            while l < 5:
+                draw(3+i, 1)
+                draw(2+i, 2)
+                draw(1+i, 3)
+                draw(1+i, 4)
+                draw(2+i, 5)
+                draw(3+i, 6)
+                draw(4+i, 7)
+                draw(5+i, 6)
+                draw(6+i, 5)
+                draw(7+i, 4)
+                draw(7+i, 3)
+                draw(6+i, 2)
+                draw(5+i, 1)
+                draw(4+i, 2)
+                sleep(0.001)
+                l+=1
 except KeyboardInterrupt:
 	_exit(0)
 _exit(0)
