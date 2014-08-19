@@ -15,8 +15,9 @@
 | spkMusic        | Melody player (Deprecated! Use RPiMusic instead)          | Python 3      | wiringpi2  |
 | gpioMorse.py    | Translate phrases in morse code for led/buzzer            | Python 3      | RPi.GPIO   |
 | MatrixTest.py   | Draw a static heart in a 8x8 led matrix                   | Python 3      | RPi.GPIO   |
-| MatrixTest.c    |                      //                                   | C (std c99)   | wiringpi2  |
+| MatrixTest.c    | Draw a static heart in a 8x8 led matrix                   | C (std c99)   | wiringpi2  |
 | MatrixScroll.py | Draw a scrolling heart in a 8x8 led matrix                | python 3      | RPi.GPIO   |
+| MatrixScroll.c  | Draw a scrolling heart in a 8x8 loed matrix               | C (std c99)   | wiringpi2  |
 
 ## Português
 
@@ -33,8 +34,9 @@
 | spkMusic        | Reprodutor de melodias (Obsoleto! Use o RPiMusic)         | Python 3      | wiringpi2  |
 | gpioMorse.py    | Traduz frases em código morse para led/buzzer             | Python 3      | RPi.GPIO   |
 | MatrixTest.py   | Desenha um coração estático em uma matriz de led de 8x8   | Python 3      | RPi.GPIO   |
-| MatrixTest.c    |                            //                             | C (std c99)   | wiringpi2  |
+| MatrixTest.c    | Desenha um coração estático em uma matriz de led de 8x8   | C (std c99)   | wiringpi2  |
 | MatrixScroll.py | Desenha um coração rolante em uma matriz de led de 8x8    | Python 3      | RPi.GPIO   |
+| MatrixScroll.c  | Desenha um coração rolante em uma matrix de led de 8x8    | C (std c99)   | wiringpi2  |
 
 *Lara Maia <lara@craft.net.br>*
 
