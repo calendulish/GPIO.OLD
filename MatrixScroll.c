@@ -37,6 +37,12 @@ void clean()
 
 void led(int column, int row, int status)
 {
+    if(STOP)
+    {
+        clean();
+        exit(0);
+    }
+
     for(int col = 0; col < 8; col++)
         if(col != column)
             digitalWrite(columns[col], status);
@@ -66,12 +72,6 @@ int main(int argc, char **argv)
 
     for(;;)
     {
-        if(STOP)
-        {
-            clean();
-            break;
-        }
-
         for(int iter = 0; iter < 24; iter++)
         {
             int i = 8-iter;
