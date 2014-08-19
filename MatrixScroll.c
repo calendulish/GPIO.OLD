@@ -74,8 +74,7 @@ int main(int argc, char **argv)
 
         for(int iter = 0; iter < 24; iter++)
         {
-            int i = 8-iter
-                ;
+            int i = 8-iter;
             for(int l = 0; l < 5; l++)
             {
                 draw(2+i, 0);
