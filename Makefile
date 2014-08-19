@@ -18,4 +18,4 @@ MatrixTest: MatrixTest.c
 MatrixScroll: MatrixScroll.c
 	$(CC) -o $@ $^ $(CFLAGS) $(FLAGS_C99) -lwiringPi
 
-.PHONY: clean MatrixTest MatrixScroll
+.PHONY: clean nothing
