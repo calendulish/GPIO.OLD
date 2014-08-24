@@ -8,24 +8,27 @@ from time import sleep
 
 led.init()
 
-def scroll():
+def scroll(text, cycles):
     i = 0
-    text = sys.argv[1]
-    cycles = int(sys.argv[2])
-    while(i < cycles):
+    while i < cycles:
         led.show_message(text, transition = transitions.left_scroll)
         i += 1
-    end()
 
 def end():
-    led.letter(0x03)
+    led.letter(0x01)
     print('\nXau!')
     sleep(1)
     led.clear()
     exit(0)
 
-try:
-    scroll()
+def usage():
+    print('\nTry: \n scrollCLI.py "your text" X\nWhere "X" is a number of transitions.')
 
+try:
+    scroll(sys.argv[1], int(sys.argv[2]))
+    end()
+
+except IndexError:
+    usage()
 except KeyboardInterrupt:
     end()
