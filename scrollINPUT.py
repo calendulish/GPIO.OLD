@@ -2,6 +2,7 @@
 
 import max7219.led as led
 import max7219.transitions as transitions
+from time import sleep
 
 led.init()
 
@@ -14,7 +15,8 @@ try:
     scroll()
 
 except KeyboardInterrupt:
-    led.show_message("Xau", transition = transitions.up_scroll)
-    led.clear()
+    led.letter(0x01)
     print('\nXau!')
+    sleep(1)
+    led.clear()
     exit(0)
