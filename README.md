@@ -1,4 +1,4 @@
-# GPIO Playground ![Raspberry](http://lara.craft.net.br/raspberry/rasplogo.gif "Raspberry")
+# GPIO Playground ![Raspberry](http://web.craft.net.br/imghp/Diversas/Rasp_turn_around.gif "Raspberry")
 
 ## English
 
@@ -19,6 +19,8 @@
 | MatrixScroll.py | Draw a scrolling heart in a 8x8 led matrix                | python 3      | RPi.GPIO   |
 | MatrixScroll.c  | Draw a scrolling heart in a 8x8 led matrix                | C (std c99)   | wiringpi2  |
 | MatrixASCII     | Draw ASCII forms in a 8x8 led matrix                      | C (std c99)   | wiringpi2  |
+| scrollINPUT.py  | Scroll a text in a max7219 controlled led matrix          | Python 2      | max7219    |
+| scrollCLI.py    | Scroll a text in a max7219 controlled led matrix, CLI ver | Python 2      | max7219    |
 
 ## Português
 
@@ -39,7 +41,9 @@
 | MatrixScroll.py | Desenha um coração rolante em uma matriz de led de 8x8    | Python 3      | RPi.GPIO   |
 | MatrixScroll.c  | Desenha um coração rolante em uma matriz de led de 8x8    | C (std c99)   | wiringpi2  |
 | MatrixASCII     | Desenha formas ASCII em uma matriz de led de 8x8          | C (std c99)   | wiringpi2  |
+| scrollINPUT.py  | Rola um texto em matriz de led (com CI max7219)           | Python 2      | max7219    |
+| scrollCLI.py    | Rola um texto em matriz de led (com CI max7219), CLI ver  | Python 2      | max7219    |
 
 *Lara Maia <lara@craft.net.br>*
 
-*Fernando Manfredi <manfredi@gmail.com>*
+*Fernando Manfredi <blackice@craft.net.br>*
