@@ -3,12 +3,12 @@
 
 import max7219.led as led
 import max7219.transitions as transitions
-import sys
+from sys import argv
 from time import sleep
 
 led.init()
 
-def scroll(text, cycles, direction=left):
+def scroll(text, cycles, direction='left'):
     i = 0
     while i < int(cycles):
         if(direction == 'up'):
@@ -27,16 +27,17 @@ def end():
     exit(0)
 
 def usage():
-    print('\nTry: \n scrollCLI.py "your text" X\nWhere "X" is a number of transitions.')
+    print('\nTry: \n scrollCLI.py "your text" X [direction]\nWhere "X" is a number of transitions. \nAnd [direction] can be "up", "simple" or "left" (optional)')
 
 try:
     # If are not available separately, write the function call with
     # the * operator to unpack the arguments out of a list or tuple:
     # https://docs.python.org/2/tutorial/controlflow.html#unpacking-argument-lists
-    scroll(*sys.argv)
+    argv.pop(0)
+    scroll(*argv)
     end()
 
-except IndexError:
+except TypeError:
     usage()
 except KeyboardInterrupt:
     end()
