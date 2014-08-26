@@ -8,10 +8,15 @@ from time import sleep
 
 led.init()
 
-def scroll(text, cycles):
+def scroll(text, cycles, direction=left):
     i = 0
-    while i < cycles:
-        led.show_message(text, transition = transitions.left_scroll)
+    while i < int(cycles):
+        if(direction == 'up'):
+            led.show_message(text, transition = transitions.up_scroll)
+        elif(direction == 'simple'):
+            led.show_message(text, transition = transitions.simple)
+        else:
+            led.show_message(text, transition = transitions.left_scroll)
         i += 1
 
 def end():
@@ -25,7 +30,10 @@ def usage():
     print('\nTry: \n scrollCLI.py "your text" X\nWhere "X" is a number of transitions.')
 
 try:
-    scroll(sys.argv[1], int(sys.argv[2]))
+    # If are not available separately, write the function call with
+    # the * operator to unpack the arguments out of a list or tuple:
+    # https://docs.python.org/2/tutorial/controlflow.html#unpacking-argument-lists
+    scroll(*sys.argv)
     end()
 
 except IndexError:
