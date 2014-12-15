@@ -776,7 +776,7 @@ def init():
     send_all_reg_byte(MAX7219_REG_DECODEMODE, 0)  # using a LED matrix (not digits)
     send_all_reg_byte(MAX7219_REG_DISPLAYTEST, 0) # no display test
     clear_all()                                   # ensure the whole array is blank
-    brightness(7)                                 # set character intensity: range: 0..15
+    brightness(1)                                 # set character intensity: range: 0..15
     send_all_reg_byte(MAX7219_REG_SHUTDOWN, 1)    # not in shutdown mode (i.e start it up)
     gfx_set_all(GFX_OFF)                          # clear the graphics buffer
 
