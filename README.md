@@ -14,7 +14,7 @@ For contributors: Please, keep the list in alphabetical order.
 | btnGAME         | Simple game using leds and buttons                        | Python 3      | RPi.GPIO   |
 | btnRGB.py       | Input control for RGB leds                                | Python 3      | RPi.GPIO   |
 | gpioMorse.py    | Translate phrases in morse code for led/buzzer            | Python 3      | RPi.GPIO   |
-| LEDMatrix       | Controls multis max7219 LED matrices                      | Python 2      | mlMAX7219] |
+| LEDMatrix       | Controls multis max7219 LED matrices                      | Python 2      | mlMAX7219  |
 | MatrixASCII     | Draw ASCII forms in a 8x8 led matrix                      | C (std c99)   | wiringpi2  |
 | MatrixScroll.c  | Draw a scrolling heart in a 8x8 led matrix                | C (std c99)   | wiringpi2  |
 | MatrixScroll.py | Draw a scrolling heart in a 8x8 led matrix                | python 3      | RPi.GPIO   |
