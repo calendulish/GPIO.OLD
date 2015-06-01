@@ -23,15 +23,13 @@
 #
 
 import RPi.GPIO as GPIO
-#import wiringpi2
 from time import sleep
 import random
 from threading import Thread
-import RPiMusic
+#import RPiMusic
 
 #Modo da GPIO seguindo a numeração BCM, ao inves da pinagem.
 GPIO.setmode(GPIO.BCM)
-#wiringpi2.wiringPiSetupGpio()
 
 class Blink(Thread):
     def __init__(self, parent):
@@ -43,11 +41,8 @@ class Blink(Thread):
             for led in [ self.parent.ledBlue, self.parent.ledGreen, self.parent.ledRed ]:
                 if self.parent.start:
                     GPIO.output(led, True)
-                    #wiringpi2.digitalWrite(led, 1)
                     sleep(random.uniform(0.5, 0.1))
-                    #wiringpi2.delay(random.uniform(500, 100))
                     GPIO.output(led, False)
-                    #wiringpi2.digitalWrite(led, 0)
                 else:
                     if not self.parent.running:
                         break
@@ -59,16 +54,8 @@ class Blink(Thread):
                 self.parent.press_btnGreen()
 
         # FIXME
-        self.parent.pMusic.end()
+        #self.parent.pMusic.end()
         GPIO.cleanup()
-
-        #wiringpi2.pinMode(self.parent.ledBlue, 0)
-        #wiringpi2.pinMode(self.parent.ledGreen, 0)
-        #wiringpi2.pinMode(self.parent.ledRed, 0)
-
-        #wiringpi2.pinMode(self.parent.btnGreen, 0)
-        #wiringpi2.pinMode(self.parent.btnYellow, 0)
-        #wiringpi2.pinMode(self.parent.btnRed, 0)
 
 class Game:
     def __init__(self):
@@ -94,30 +81,18 @@ class Game:
         GPIO.setup(self.ledBlue, GPIO.OUT, initial=GPIO.LOW)
         GPIO.setup(self.ledGreen, GPIO.OUT, initial=GPIO.LOW)
         GPIO.setup(self.ledRed, GPIO.OUT, initial=GPIO.LOW)
-        #wiringpi2.pinMode(self.ledBlue, 1)
-        #wiringpi2.pinMode(self.ledGreen, 1)
-        #wiringpi2.pinMode(self.ledRed, 1)
 
         GPIO.setup(self.btnRed, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
         GPIO.setup(self.btnYellow, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
         GPIO.setup(self.btnGreen, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-        #wiringpi2.pinMode(self.btnRed, 0)
-        #wiringpi2.pullUpDnControl(self.btnRed, 1)
-        #wiringpi2.pinMode(self.btnYellow, 0)
-        #wiringpi2.pullUpDnControl(self.btnYellow, 1)
-        #wiringpi2.pinMode(self.btnGreen, 0)
-        #wiringpi2.pullUpDnControl(self.btnGreen, 1)
 
         GPIO.add_event_detect(self.btnRed, GPIO.FALLING, callback=self._exit, bouncetime=300)
         GPIO.add_event_detect(self.btnYellow, GPIO.FALLING, callback=self.press_btnYellow, bouncetime=300)
         GPIO.add_event_detect(self.btnGreen, GPIO.FALLING, callback=self.press_btnGreen, bouncetime=1000)
-        #wiringpi2.wiringPiISR(self.btnRed, 0, self._exit())
-        #wiringpi2.wiringPiISR(self.btnYellow, 0, self.press_btnYellow())
-        #wiringpi2.wiringPiISR(self.btnGreen, 0, self.pess_btnGreen())
 
         self.thBlink = Blink(self)
 
-        self.pMusic = RPiMusic.Melody()
+        #self.pMusic = RPiMusic.Melody()
 
     def main(self):
         # Quem vai jogar?
@@ -144,7 +119,6 @@ class Game:
     verde estiver ligado, conita um ponto'''
     def press_btnYellow(self, obj):
         if GPIO.input(self.ledGreen):
-        #if wiringpi2.digitalRead(self.ledGreen):
             self.points +=1
 
             if self.points == 1:
@@ -153,20 +127,20 @@ class Game:
                 print('Conseguiu +1, Legal! Total: {} pontos'.format(self.points))
         else:
             print('Errou bobão :P')
-        self.pMusic.buzzerPlay("ClickSound")
+        #self.pMusic.buzzerPlay("ClickSound")
 
     '''Botão verde inicia ou para o jogo alterando a variavel
     global POWER que e lida na função pisca()'''
     def press_btnGreen(self, obj=None):
         if not self.start:
-            self.pMusic.buzzerPlay("ThemeSound")
+            #self.pMusic.buzzerPlay("ThemeSound")
             print("ATENCÃO! ATENCÃO! ATENCÃO! COMEÇOU!!!")
             print("Quando o led VERDE acender, aperte o botão AMARELO")
             self.count = 0
             self.start = True # Deve iniciar a thread pisca()
         else:
             self.start = False # Encerra o jogo
-            self.pMusic.buzzerPlay("EndSound")
+            #self.pMusic.buzzerPlay("EndSound")
             print("Sistemas desligados...")
             if self.points == 0:
                 print("{}, você tentou jogar pelo menos?".format(self.player))

@@ -1,4 +1,4 @@
-# btnGAME ![Raspberry](http://lara.craft.net.br/raspberry/rasplogo.gif "Raspberry")
+# btnGAME ![Raspberry](http://web.craft.net.br/imghp/Diversas/Rasp_turn_around.gif "Raspberry")
 
 This is a simple game made in Python for Raspberry Pi GPIO, using the RPi.GPIO lib.
 
