@@ -1,5 +1,7 @@
 # GPIO Playground ![Raspberry](http://web.craft.net.br/imghp/Diversas/Rasp_turn_around.gif "Raspberry")
 
+[![Join the chat at https://gitter.im/RaspberryLove/GPIO](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/RaspberryLove/GPIO?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 All files in this repository is distributed under the terms of the GNU General Public License
 as published by the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
