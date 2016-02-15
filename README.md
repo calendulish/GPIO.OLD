@@ -1,4 +1,4 @@
-# GPIO Playground ![Raspberry](http://web.craft.net.br/imghp/Diversas/Rasp_turn_around.gif "Raspberry")
+# GPIO Playground ![Raspberry](http://acidhub.click/imghp/Diversas/Rasp_turn_around.gif "Raspberry")
 
 All files in this repository is distributed under the terms of the GNU General Public License
 as published by the Free Software Foundation, either version 3 of the License, or
@@ -42,6 +42,6 @@ For contributors: Please, keep the list in alphabetical order.
 
 NO WARRANTY EXPRESSED OR IMPLIED. IF IT CAUSES A NUCLEAR EXPLOSION I'M NOT RESPONSIBLE.
 
-*Lara Maia <lara@craft.net.br>*
+_Lara Maia <mailto:dev@lara.click>_
 
-*Fernando Manfredi <blackice@craft.net.br>*
+_Fernando Manfredi <mailto:contact@acidhub.click>_
